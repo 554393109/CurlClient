@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -12,8 +13,6 @@ namespace FormsApp
 {
     public partial class MainForm : Form
     {
-        //Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-
         public MainForm()
         {
             InitializeComponent();
@@ -29,7 +28,6 @@ namespace FormsApp
                     var str_cmd = $"-H \"Content-Type:application/x-www-form-urlencoded;charset=UTF-8\" --user-agent \"YZQ.curl\" --data \"{str_form}\" https://account.storepos.cn/UnifiedPay/Mch_Reg";
 
                     pro.StartInfo.FileName = Path.Combine(Environment.CurrentDirectory, "Lib\\curl.exe");
-                    //pro.StartInfo.FileName = @"C:\curl\curl.exe";
                     pro.StartInfo.UseShellExecute = false;
                     pro.StartInfo.RedirectStandardInput = true;
                     pro.StartInfo.RedirectStandardOutput = true;
@@ -42,7 +40,7 @@ namespace FormsApp
                     pro.StandardInput.AutoFlush = true;
 
                     //获取cmd窗口的输出信息
-                    string output = pro.StandardOutput.ReadToEnd();
+                    var output = pro.StandardOutput.ReadToEnd();
 
                     pro.WaitForExit();
                     pro.Close();
