@@ -28,7 +28,7 @@ namespace FormsApp
     internal class External
     {
         // private members
-        private const String m_libCurlBase = @"Lib\libcurl_OLD.dll";
+        private const String m_libCurlBase = @"Lib\libcurl-OLD.dll";
         private const String m_libCurlShim = @"Lib\LibCurlShim.dll";
 
         // internal delegates from cURL
